@@ -1,0 +1,2 @@
+*.root
+!OptSim_LUT*.root
