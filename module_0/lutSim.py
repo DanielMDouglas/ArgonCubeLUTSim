@@ -53,10 +53,23 @@ def GetLutGeometry(path_lut):
     return np.array([lut_min,lut_max,lut_ndiv])
 
 
+def GetVoxelUnwrapped(pos,lut_geometry):
+
+    (lut_min,lut_max,lut_ndiv) = lut_geometry
+    vox_xyz = np.floor(pos/(lut_max-lut_min)*lut_ndiv).astype(int)+lut_ndiv/2
+
+    return vox_xyz
+
 def GetVoxel(pos,lut_geometry):
 
     (lut_min,lut_max,lut_ndiv) = lut_geometry
     vox_xyz = np.floor(pos/(lut_max-lut_min)*lut_ndiv).astype(int)+lut_ndiv/2
+    voxel = vox_xyz[2]*lut_ndiv[0]*lut_ndiv[1]+vox_xyz[1]*lut_ndiv[0]+vox_xyz[0]
+
+    return voxel
+
+def WrapVoxelInds(vox_xyz, lut_geometry):
+    (lut_min,lut_max,lut_ndiv) = lut_geometry
     voxel = vox_xyz[2]*lut_ndiv[0]*lut_ndiv[1]+vox_xyz[1]*lut_ndiv[0]+vox_xyz[0]
 
     return voxel
