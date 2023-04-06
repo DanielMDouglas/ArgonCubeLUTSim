@@ -73,6 +73,8 @@ def MakeNumpyArrayFast(t_lut, lut_geometry, nbins_time):
             print(entry, (i,j,k), ':', t_lut.Voxel, t_lut.OpChannel, '|', t_lut.Visibility, t_lut.T1)
         elif entry == 10:
             print('...')
+        elif entry > 10 and (entry % 10000 == 0):
+            print(f'{entry}/{n}', end='\r')
 
         opChan = t_lut.OpChannel
         outputLUTarr[k, j, i, opChan]['vis'] = t_lut.Visibility
@@ -95,7 +97,8 @@ def main():
 
     arr = MakeNumpyArrayFast(t_lut, lut_geometry, nbins_time)
 
-    np.save(args.output, arr)
+    #np.save(args.output, arr)
+    np.savez_compressed(args.output, arr=arr)
 
 if __name__ == '__main__':
 
