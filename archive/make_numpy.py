@@ -5,9 +5,9 @@ def array_dtype(nbins_time):
 
 def MakeNumpyArray(t_lut, lut_geometry, nbins_time):
     (lut_min, lut_max, lut_ndiv) = lut_geometry
-    print(lut_min)
-    print(lut_max)
-    print(lut_ndiv)
+    print("LUT min: ", lut_min)
+    print("LUT max: ", lut_max)
+    print("LUT number of bins: ", lut_ndiv)
 
     # output array has shape (nVoxX, nVoxY, nVoxZ, nOpChan, 2)
     # last dimension is 0 = visibility, 1 = t0
@@ -52,9 +52,9 @@ def GetVoxelInds(voxel, lut_geometry):
 
 def MakeNumpyArrayFast(t_lut, lut_geometry, nbins_time):
     (lut_min, lut_max, lut_ndiv) = lut_geometry
-    print(lut_min)
-    print(lut_max)
-    print(lut_ndiv)
+    print("LUT min: ", lut_min)
+    print("LUT max: ", lut_max)
+    print("LUT number of bins: ", lut_ndiv)
 
     # output array has shape (nVoxX, nVoxY, nVoxZ, nOpChan, 2)
     # last dimension is 0 = visibility, 1 = t0
